@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>젝시믹스</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
+
+    <script>
+        window.addEventListener("scroll", function() {
+            var Navi_SlideUp = document.querySelector(".fix_header_wrap");
+            if (window.scrollY >= 200) {
+                Navi_SlideUp.style.transform = "translateY(-40px)";
+            } else {
+                Navi_SlideUp.style.transform = "translateY(0)";
+            }
+        });
+        // 최상단 네비바 슬라이드
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchButton = document.querySelector('.search_btn');
+            const sideBarRight = document.querySelector('.side_bar_right');
+            const rightCloseButton = document.querySelector('.right_close');
+            const Opacity = document.querySelector('.opacityScreen');
+            const body = document.body;
+            let isOpen = false;
+
+            searchButton.addEventListener('click', function() {
+                if (isOpen) {
+                    sideBarRight.style.animationName = 'slideOut';
+                    Opacity.style.display = 'none';
+                } else {
+                    sideBarRight.style.animationName = 'slideIn';
+                    Opacity.style.display = 'block';
+                }
+                isOpen = !isOpen;
+            });
+
+            rightCloseButton.addEventListener('click', function() {
+                sideBarRight.style.animationName = 'slideOut';
+                Opacity.style.display = 'none';
+                isOpen = false;
+            });
+        });
+        // 우측 사이드바 작동
+
+        var isImageHovered = false;
+
+        function onMouseOverImage(img) {
+            if (!isImageHovered) {
+                var currentSrc = img.getAttribute('src');
+                var parts = currentSrc.split('.');
+                var name = parts[0];
+                var extension = parts[1];
+                var Bcut = name + '-1.' + extension;
+                img.setAttribute('src', Bcut);
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                isImageHovered = true;
+            }
+        }
+
+        function onMouseOutImage(img) {
+            if (isImageHovered) {
+                var currentSrc = img.getAttribute('src');
+                var parts = currentSrc.split('-1.');
+                var originalSrc = parts[0] + '.' + parts[1];
+                img.setAttribute('src', originalSrc);
+                
+                isImageHovered = false;
+            }
+        }
+        // 메인이미지 호버효과
+
+        
+        function toggleMenuIcon() {
+            const btnMenu = document.querySelector('.btn-menu');
+            const X_bar_top = document.querySelector('.X_bar_top');
+            const X_bar_mid = document.querySelector('.X_bar_mid');
+            const X_bar_bottom = document.querySelector('.X_bar_bottom');
+            const AllMENU = document.querySelector('.AllMENU');
+            
+            // 버튼의 활성화 상태를 확인하여 토글
+            if (btnMenu.classList.contains('active')) {
+                btnMenu.classList.remove('active');
+                X_bar_top.style.transform = 'none';
+                X_bar_mid.style.transform = 'none';
+                X_bar_mid.style.opacity = '1';
+                X_bar_bottom.style.transform = 'none';
+                AllMENU.style.opacity = '0';
+            } else {
+                btnMenu.classList.add('active');
+                X_bar_top.style.transform = 'rotate(405deg) translate(3px, 3px)';
+                X_bar_mid.style.transform = 'translateX(-50px)';
+                X_bar_mid.style.opacity = '0';
+                X_bar_bottom.style.transform = 'rotate(-405deg) translate(2px, -2px)';
+                AllMENU.style.opacity = '1';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.btn-menu').addEventListener('click', toggleMenuIcon);
+        // 햄버거 버튼
+    });
+
+    
+    </script>
+<!-- ================================================================================== 스크립트 구역 ================================================================================== -->
+
+    <style>
+        body{
+            margin: 0px; padding: 0px; text-decoration: none;
+        }
+
+        .menu_bar>li{
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .menu_bar>li>a{
+            text-decoration: none;
+        }
+
+        .X_bar_top {
+            transform-origin: 6px 2px;
+        }
+        .X_bar_bottom {
+            transform-origin: 3px 0px;
+        }
+
+        .btn_mypage{
+            position: relative;
+        }
+
+        .mypage_menu{
+            display: none;
+            width: 100px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .btn_mypage:hover>.mypage_menu{
+            display: block;
+            position: absolute;
+            top: 77px;
+            left: -25px;
+            background-color: white;
+        }
+        
+        .mypage_menu>li>a{
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul>li>ul{
+            display: none;
+        }
+
+        ul>li:hover>ul{
+            display: block;
+            position: absolute;
+            width: 150px;
+            top: 77px;
+            left: -50px;
+            background-color: white;
+        }
+
+        .side_bar_right {
+            position: fixed;
+            width: 700px;
+            height: 100%;
+            background-color: black;
+            right: -700px;
+            top: 0;
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+
+        .up_icon::after{
+            content: "UP";
+            color: orange;
+            font-size: 10px;
+            font-weight: 600;
+            position: absolute;
+            padding: 2px;
+            animation: icon_slideUp 1.5s ease infinite; 
+        }
+
+        i{
+            font-size: 25px; margin: 15px;
+        }
+
+        .main_items img{
+            width: 100%;
+            height: auto;
+            margin-top: 50px;
+        }
+        .main_items .status{
+            width: 57PX;
+            height: 19px;
+            padding-right: 3px;
+            margin: 0;
+        }
+        .main_items .status_size{
+            width: 39PX;
+            height: 19px;
+            padding-right: 3px;
+            margin: 0;
+        }
+    
+        .main_items2 img{
+            width: 100%;
+            height: auto;
+            margin-top: 50px;
+        }
+        .main_items2 .status{
+            width: 57PX;
+            height: 19px;
+            padding-right: 3px;
+            margin: 0;
+        }
+        .main_items2 .status_size{
+            width: 39PX;
+            height: 19px;
+            padding-right: 3px;
+            margin: 0;
+        }
+    
+        
+        @keyframes icon_slideUp {
+            from {
+                transform: translateY(7%)
+            }to {
+                transform: translateY(-7%)
+            };
+        }
+
+        @keyframes slideIn {
+            from {
+                right: -700px;
+            }
+            to {
+                right: 0;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                right: 0;
+            }
+            to {
+                right: -700px;
+            }
+        }
+    </style>
+<!-- ================================================================================== CSS 구역 ================================================================================== -->
+
+    
+</head>
+
+<body>
+    <div class="side_bar_right" style="width: 550px; height: 100%; background-color: white; position: fixed; right: -550px; top: 0px; z-index: 9999;">
+        <div class="right_close xi-close" style="font-size: 30px; font-weight: 600;  top: 30px; right: 30px; position: absolute; cursor: pointer;"></div>
+    </div>
+    <div class="side_bar_right" style="width: 550px; height: 100%; background-color: white; position: fixed; right: -550px; top: 0px; z-index: 9999;">
+        <div class="right_close xi-close" style="font-size: 30px; font-weight: 600;  top: 30px; right: 30px; position: absolute; cursor: pointer;"></div>
+    </div>
+    <!-- 사이드 바 -->
+    <div class="opacityScreen" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-color: rgba(0,0,0,0.5); z-index: 1000; display: none;"></div>
+    <!-- 사이드 바 투명 화면 -->
+
+    <header style="min-width: 1440px;">
+        <div class="header_wrap" style="background-color: black; width: 100%; height: 40px;  text-align: center; position: fixed; top: 0; z-index: 999;">
+            <select class="lang" style="background-color: black; color: white; border: none; position: absolute; left: 60px; top: 15px; font-size: 12px;">
+                <option value="kor">KOR</option>
+                <option value="eng">ENG</option>
+                <option value="jpn">JPN</option>
+                <option value="twn">TWN</option>
+            </select>
+            <a href="https://pf.kakao.com/_VGxmxeu" target="_blank" style="color: white; line-height: 40px; font-size: 12px; text-decoration: none;">
+                카카오톡 채널 추가 시 3천원 추가 할인!
+            </a>
+        </div>
+        <div class="fix_header_wrap" style="width: 100%; height: 100px; display: flex; justify-content: space-between; padding: 0 50px; position: fixed; z-index: 999; top: 40px; background-color: white; transition: 0.7s;">
+            <div class="btn-all-menu" style="width: 208px; height: 100; display: flex; align-items: center;">
+                <a href="#" class="btn-menu" style="cursor: pointer; margin-left: 5px; width: 30px; height: 23px; display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+                    <span class="X_bar_top" style="display: block; width: 20px; height: 3px; background-color: black; transition: 0.5s;"></span>
+                    <span class="X_bar_mid" style="display: block; width: 20px; height: 3px; background-color: black; transition: 0.5s;"></span>
+                    <span class="X_bar_bottom" style="display: block; width: 20px; height: 3px; background-color: black; transition: 0.5s;"></span>
+                </a>
+                <!-- 햄버거 버튼 -->
+                <a href="/index.html" style="margin-left: 40px;"><img src="/imgs/header_logo_bk.png"></a>
+                <!-- 네비바 좌측-->
+            </div>
+        
+
+            <ul class="menu_bar" style="display: flex; justify-content: space-between; text-decoration: none; line-height: 90px;">
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=003&mcode=002&type=Y">가을특가대전</a></li>
+                
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=027&type=Y" class="up_icon">신상할인</a></li>
+                
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=012&type=Y">1+1</a></li>
+                
+                <li>베스트
+                    <ul>
+                        <li>우먼즈</li>
+                        <li>멘즈</li>
+                        <li>골프</li>
+                        <li>키즈</li>
+                        <li>슈즈&상품</li>
+                    </ul>
+                </li>
+                <li>스웜웨어</li>
+                <li>우먼즈</li>
+                <li>맨즈</li>
+                <li>골프</li>
+                <li>키즈</li>
+                <li>슈즈&용품</li>
+                <li>커뮤니티</li>
+            </ul>
+            <!-- 메뉴 카테고리 -->
+
+            <div class="mypage" style="display: flex; align-items: center;">
+                <a href="#"><i class="search_btn xi-search"></i></a>
+                <a href="https://www.xexymix.com/shop/basket.html"><i class="xi-cart-o"></i></a>
+                <div class="btn_mypage">
+                <a href="https://www.xexymix.com/shop/mypage.html">
+                    <i class="xi-user-o"></i>
+                    <ul class="mypage_menu">
+                        <li><a href="">회원가입</a></li>
+                        <li><a href="">주문조회</a></li>
+                        <li><a href="">배송조회</a></li>
+                        <li><a href="">쿠폰조회</a></li>
+                        <li><a href="">고객센터</a></li>
+                        <li><a href="">로그인</a></li>
+                    </ul>
+                </a></div>
+
+            </div>
+            
+        
+            <!-- 마이페이지 버튼구역 -->
+            <div class="AllMENU" style="width: 100%; height: 540px; padding: 50px 0; background-color: white; position: fixed; right: 0px; top: 100px; z-index: 1000; opacity: 0; transition: 0.3s;">
+                
+            </div>
+        </div>
+        <!-- 상단 네비바 끝 -->
+    </header>
+
+        <section class="slide_section" style="width: 100%; height: 800px; margin-top: 140px;">
+            <!-- <div class="btn_slide_left" style="position: absolute; left: 25px; top:450px;">
+                <div class="xi-angle-left-thin" style="font-size: 60px;"></div>
+            </div>
+            <div class="btn_slide_left" style="position: absolute; right: 25px; top:450px;">
+                <div class="xi-angle-right-thin" style="position: relative; font-size: 60px; margin: 0 auto 75px;"></div>
+            </div>
+            좌우버튼 -->
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/imgs/slide_1.jpg" class="d-block w-100">
+                  </div>
+                  <div class="carousel-item">
+                    <div class="d-flex">
+                        <img src="/imgs/slide_2-1.jpg" style="width: 600px; height: auto;">
+                        <img src="/imgs/slide_2-2.jpg" style="width: 600px; height: auto;">
+                        <img src="/imgs/slide_2-3.jpg" style="width: 600px; height: auto;">
+                    </div>
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            <!-- 슬라이드 영역 -->
+        </section>
+
+        <section class="collection" style="display: flex; flex-direction: row; justify-content:space-around; width: 65%; margin: 50px auto;">
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_image3&page=1&type=v&board_cate=&num1=999796&num2=00000&lock=N"><img src="/imgs/collection_1.png"></a></div>
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_image3&page=1&type=v&board_cate=&num1=999797&num2=00000&number=120&lock=N"><img src="/imgs/collection_2.png"></a></div>
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999745&num2=00000&lock=N"><img src="/imgs/collection_3.png"></a></div>
+            <div><a href="https://xexymix.com/shop/shopbrand.html?xcode=022&mcode=014&type=Y"><img src="/imgs/collection_4.png"></a></div>
+            <div><a href="https://xexymix.com/shop/shopbrand.html?xcode=022&mcode=009&type=Y"><img src="/imgs/collection_5.png"></a></div>
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999758&num2=00000&number=16&lock=N"><img src="/imgs/collection_6.png"></a></div>
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999752&num2=00000&number=5&lock=N&flag=notice"><img src="/imgs/collection_7.png"></a></div>
+            <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999785&num2=00000&number=9&lock=N"><img src="/imgs/collection_8.png"></a></div>
+        </section>
+            <!-- 컬렉션 아이콘 영역 -->
+            <section style="display: flex; margin: 100px 100px 0; width: 100%; min-width: 1400px;">
+                <section style="flex: 1;">
+                    <div>
+                        <h2 style="font-weight: 600; font-size: 35px;">이유있는<br>베스트 아이템</h2>
+                    </div>
+                </section>
+                <section class="main_items" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 50px; flex: 5; padding-bottom: 50px; border-bottom: 1px solid rgb(185, 185, 185);">
+                    <div>
+                        <img src="/imgs/item_1.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)"><br>
+                        <div style="margin: 5px 0;"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D" style="text-decoration: none; color: rgb(75,75,75,0.8); font-size: 14px;">블랙라벨 시그니처 380N 레깅스 1+1</a></div>
+                        <p style="margin: 0;">59,800원<del style="padding-left: 10px; font-size: 12px; color: gray;">118,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="/imgs/item_2.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div style="margin: 5px 0;"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D" style="text-decoration: none; color: rgb(75,75,75,0.8); font-size: 14px;">블랙라벨 시그니처 360N 레깅스 1+1</a></div>
+                        <p style="margin: 0;">54,800원<del style="padding-left: 10px; font-size: 12px; color: gray;">98,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="/imgs/item_3.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div style="margin: 5px 0;"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D" style="text-decoration: none; color: rgb(75,75,75,0.8); font-size: 14px;">V업 3D 플러스 레깅스 1+1</a></div>
+                        <p style="margin: 0;">32,800원<del style="padding-left: 10px; font-size: 12px; color: gray;">78,000</del></p>
+                        <img src="imgs/item_status_size_3xl.gif" class="status_size"><img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="/imgs/item_4.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div style="margin: 5px 0;"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D" style="text-decoration: none; color: rgb(75,75,75,0.8); font-size: 14px;">스트레치 밴딩 9부 슬랙스 1+1</a></div>
+                        <p style="margin: 0;">69,800원<del style="padding-left: 10px; font-size: 12px; color: gray;">98,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="/imgs/item_5.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div style="margin: 5px 0;"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D" style="text-decoration: none; color: rgb(75,75,75,0.8); font-size: 14px;">퍼포먼스 조거팬츠 1+1</a></div>
+                        <p style="margin: 0;">74,800원<del style="padding-left: 10px; font-size: 12px; color: gray;">104,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="/imgs/item_6.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_7.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                </section>
+            </section>
+
+            <section style="display: flex; margin: 0 100px; margin-top: 50px; border-bottom: 1px solid;">
+                <section style="flex: 1;">
+
+                </section>
+                <!-- 왼쪽 여백 -->
+                <section class="main_items2" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 25px; flex: 4;">
+                    <div>
+                        <img src="/imgs/item_1.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_2.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_3.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_4.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_5.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_6.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="/imgs/item_7.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                </section>
+            </section>
+            
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>젝시믹스</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <style>
+    body{
+        margin: 0px; padding: 0px; text-decoration: none;
+    }
+
+    .menu_bar>li{
+        margin: 0 15px;
+    }
+    
+    .menu_bar>li>a{
+    text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    ul>li>ul{
+        display: none;
+    }
+
+    ul>li:hover>ul{
+        display: block;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(7%)
+        }to {
+            transform: translateY(-7%)
+        };
+    }
+    .up_icon::after{
+        content: "UP";
+        color: orange;
+        font-size: 10px;
+        font-weight: 600;
+        position: absolute;
+        padding: 2px;
+        animation: slideUp 1.5s ease infinite;
+        
+        
+    }
+
+    i{
+        font-size: 25px; margin: 15px;
+    }
+    </style>
+</head>
+<body>
+    <header style="min-width: 1440px;">
+        <div class="header_wrap" style="background-color: black; width: 100%; height: 35px;  text-align: center;">
+            <select class="lang" style="background-color: black; color: white; border: none; position: absolute; left: 50px; top: 10px; font-size: 9px;">
+                <option value="kor">KOR</option>
+                <option value="eng">ENG</option>
+                <option value="jpn">JPN</option>
+                <option value="twn">TWN</option>
+            </select>
+            <a href="https://pf.kakao.com/_VGxmxeu" target="_blank" style="color: white; line-height: 35px; font-size: 12px; text-decoration: none;">
+                카카오톡 채널 추가 시 3천원 추가 할인!
+            </a>
+        </div>
+        <div class="fix_header_wrap" style="height: 90px; display: flex; justify-content: space-between; margin: 0 50px;">
+            <div class="all-menu" style="width: 208px; height: 90px; display: flex; align-items: center;">
+                <a href="#" class="btn-menu" style="cursor: pointer; margin-left: 5px; width: 30px; height: 23px; display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
+                    <span style="display: block; width: 20px; height: 3px; background-color: black;"></span>
+                    <span style="display: block; width: 20px; height: 3px; background-color: black;"></span>
+                    <span style="display: block; width: 20px; height: 3px; background-color: black;"></span>
+                </a>
+                <!-- 햄버거 버튼 -->
+                <a href="/index.html" style="margin-left: 40px;"><img src="/imgs/header_logo_bk.png"></a>
+                <!-- 네비바 좌측-->
+            </div>
+        
+
+            <ul class="menu_bar" style="display: flex; justify-content: space-between; text-decoration: none; line-height: 90px;">
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=003&mcode=002&type=Y">가을특가대전</a></li>
+                
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=027&type=Y" class="up_icon">신상할인</a></li>
+                
+                <li><a href="https://www.xexymix.com/shop/shopbrand.html?xcode=012&type=Y">1+1</a></li>
+                
+                <li>베스트
+                    <ul>
+                        <li>우먼즈</li>
+                        <li>멘즈</li>
+                        <li>골프</li>
+                        <li>키즈</li>
+                        <li>슈즈&상품</li>
+                    </ul>
+                </li>
+                <li>스웜웨어</li>
+                <li>우먼즈</li>
+                <li>맨즈</li>
+                <li>골프</li>
+                <li>키즈</li>
+                <li>슈즈&용품</li>
+                <li>커뮤니티</li>
+            </ul>
+            <!-- 메뉴 카테고리 -->
+
+            <div class="mypage" style="display: flex; align-items: center;">
+                <a href="#"><i class="xi-search"></i></a>
+                <a href="https://www.xexymix.com/shop/basket.html"><i class="xi-cart-o"></i></a>
+                <a href="https://www.xexymix.com/shop/mypage.html"><i class="xi-user-o"></i></a>
+            </div>
+        
+            <!-- 마이페이지 버튼구역 -->
+        </div>
+        <!-- 상단 네비바 끝 -->
+
+        <section class="img_slide">
+
+        </section>
+    </header>
+</body>
+</html>

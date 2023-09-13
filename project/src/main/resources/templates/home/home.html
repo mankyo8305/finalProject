@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일허브</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+    <script>
+        window.addEventListener("scroll", function() {
+            var Navi_SlideUp = document.querySelector(".fix_header_wrap");
+            var btn_all_menu = document.querySelector(".btn-all-menu");
+            var AllMENU = document.querySelector(".AllMENU");
+            var MenuBar = document.querySelector(".menu_bar");
+
+
+            if (window.scrollY >= 200) {
+                Navi_SlideUp.style.transform = "translateY(-35px)";
+                AllMENU.style.transform = "translateY(-35px)";
+                Navi_SlideUp.style.height = '70px';
+                btn_all_menu.style.height = '70px';
+                MenuBar.style.height = '70px';
+                MenuBar.style.lineHeight = '70px';
+                
+            } else {
+                Navi_SlideUp.style.transform = "translateY(0)";
+                AllMENU.style.transform = "translateY(0)";
+                Navi_SlideUp.style.height = '90px';
+                btn_all_menu.style.height = '90px';
+                MenuBar.style.height = '90px';
+                MenuBar.style.lineHeight = '90px';
+            }
+        });
+        // 최상단 네비바 슬라이드
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchButton = document.querySelector('.search_btn');
+            const sideBarRight = document.querySelector('.side_bar_right');
+            const rightCloseButton = document.querySelector('.right_close');
+            const Opacity = document.querySelector('.opacityScreen');
+            const body = document.body;
+            let isOpen = false;
+
+            searchButton.addEventListener('click', function() {
+                if (isOpen) {
+                    sideBarRight.style.animationName = 'slideOut';
+                    Opacity.style.display = 'none';
+                } else {
+                    sideBarRight.style.animationName = 'slideIn';
+                    Opacity.style.display = 'block';
+                }
+                isOpen = !isOpen;
+            });
+
+            rightCloseButton.addEventListener('click', function() {
+                sideBarRight.style.animationName = 'slideOut';
+                Opacity.style.display = 'none';
+                isOpen = false;
+            });
+        });
+        // 우측 사이드바 작동
+
+        
+        
+        // 사이드 스크롤바
+
+        var isImageHovered = false;
+
+        function onMouseOverImage(img) {
+            if (!isImageHovered) {
+                var currentSrc = img.getAttribute('src');
+                var parts = currentSrc.split('.');
+                var name = parts[0];
+                var extension = parts[1];
+                var Bcut = name + '-1.' + extension;
+                img.setAttribute('src', Bcut);
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                isImageHovered = true;
+            }
+        }
+
+        function onMouseOutImage(img) {
+            if (isImageHovered) {
+                var currentSrc = img.getAttribute('src');
+                var parts = currentSrc.split('-1.');
+                var originalSrc = parts[0] + '.' + parts[1];
+                img.setAttribute('src', originalSrc);
+                
+                isImageHovered = false;
+            }
+        }
+        // 메인이미지 호버효과
+
+        
+        function toggleMenuIcon() {
+            const btnMenu = document.querySelector('.btn-menu');
+            const X_bar_top = document.querySelector('.X_bar_top');
+            const X_bar_mid = document.querySelector('.X_bar_mid');
+            const X_bar_bottom = document.querySelector('.X_bar_bottom');
+            const AllMENU = document.querySelector('.AllMENU');
+            
+            // 버튼의 활성화 상태를 확인하여 토글
+            if (btnMenu.classList.contains('active')) {
+                btnMenu.classList.remove('active');
+                X_bar_top.style.transform = 'none';
+                X_bar_mid.style.transform = 'none';
+                X_bar_mid.style.opacity = '1';
+                X_bar_bottom.style.transform = 'none';
+                AllMENU.style.opacity = '0';
+                AllMENU.style.height = '0';
+            } else {
+                btnMenu.classList.add('active');
+                X_bar_top.style.transform = 'rotate(45deg) translate(3px, 3px)';
+                X_bar_mid.style.transform = 'translateX(-25px)';
+                X_bar_mid.style.opacity = '0';
+                X_bar_bottom.style.transform = 'rotate(-45deg) translate(2px, -2px)';
+                AllMENU.style.opacity = '1';
+                AllMENU.style.height = '630px';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.btn-menu').addEventListener('click', toggleMenuIcon);
+        // 햄버거 버튼
+    });
+    </script>
+<!-- ================================================================================== 스크립트 구역 ================================================================================== -->    
+</head>
+
+<body>
+    <header class="header">
+        <div class="side_bar_right">
+            <div class="right_close xi-close"></div>
+        </div>
+        <!-- 사이드 바 -->
+
+        <div class="opacityScreen"></div>
+        <!-- 투명처리 화면 -->
+
+
+        <div class="auto_scroll">
+            <div class=" xi-angle-up-thin" id="go_top">
+            </div>
+            <div class=" xi-angle-down-thin" id="go_bottom">
+            </div>
+        </div>
+        <!-- 사이드 스크롤-->
+
+        <div class="AllMENU"></div>
+        <!-- 전체 카테고리 -->
+
+        <div class="header_wrap">
+        
+        
+        <div class="lang_box"><p>KOR</p> <i class="xi-caret-down-min"></i>
+            <div class="lang_list">
+                <a href="#" class="kor">KOR</a>
+                <a href="#" class="eng">ENG</a>
+                <a href="#" class="jpn">JPN</a>
+                <a href="#" class="twn">TWN</a>
+            </div>
+        </div>
+            <!-- <select class="lang">
+                <option value="kor">KOR</option>
+                <option value="eng">ENG</option>
+                <option value="jpn">JPN</option>
+                <option value="twn">TWN</option>
+            </select> -->
+            <a href="https://pf.kakao.com/_VGxmxeu" target="_blank" class="join_kakao">
+                카카오톡 채널 추가 시 3천원 추가 할인!
+            </a>
+        </div>
+        <div class="fix_header_wrap">
+            <div class="btn-all-menu">
+                <a href="#" class="btn-menu">
+                    <span class="X_bar_top"></span>
+                    <span class="X_bar_mid"></span>
+                    <span class="X_bar_bottom"></span>
+                </a>
+                <!-- 햄버거 버튼 -->
+                <a href="home.html" class="main_logo"><img src="imgs/header_logo_bk.png"></a>
+                <!-- 네비바 좌측-->
+            </div>
+        
+
+            <ul class="menu_bar">
+                <li class="up_icon">페이스케어</a>
+                    <ul>
+                        <li><a href="#">스킨</a></li>
+                        <li><a href="#">마스크팩</a></li>
+                        <li><a href="#">클랜징</a></li>
+                        <li><a href="#">선케어</a></li>
+                        <li><a href="#">메이크업</a></li>
+                    </ul>
+                </li>
+                
+                <li>바디케어</a>
+                    <ul>
+                        <li><a href="#">바디워시</a></li>
+                        <li><a href="#">제모/왁싱</a></li>
+                        <li><a href="#">스크럽</a></li>
+                        <li><a href="#">핸드케어</a></li>
+                    </ul>
+                </li>
+                
+                <li>헤어케어</a>
+                    <ul>
+                        <li><a href="#">샴푸/린스</a></li>
+                        <li><a href="#">트리트먼트</a></li>
+                        <li><a href="#">염색약</a></li>
+                        <li><a href="#">스타일링</a></li>
+                        <li><a href="#">헤어기기</a></li>
+                    </ul>
+                </li>
+                
+                <li>게임<img src="imgs/game.png" class="game">
+                    <ul>
+                        <li><a href="#">키보드&마우스</a></li>
+                        <li><a href="#">스피커</a></li>
+                        <li><a href="#">모니터</a></li>
+                        <li><a href="#">게이밍 의자</a></li>
+                    </ul>
+                </li>
+                
+                <li>푸드
+                    <ul>
+                        <li><a href="#">비타민</a></li>
+                        <li><a href="#">간편식품</a></li>
+                        <li><a href="#">디저트</a></li>
+                        <li><a href="#">커피</a></li>
+                        <li><a href="#">건강식품</a></li>
+                    </ul>
+                </li>
+
+                <li>음악
+                    <ul>
+                        <li><a href="#">음반</a></li>
+                        <li><a href="#">CD</a></li>
+                    </ul>
+                </li>
+
+                <li>위생용품
+                    <ul>
+                        <li><a href="#">생리대</a></li>
+                        <li><a href="#">청결제</a></li>
+                        <li><a href="#">성인용품</a></li>
+                    </ul>
+                </li>
+
+                <li>문구
+                    <ul>
+                        <li><a href="#">복사용지</a></li>
+                        <li><a href="#">필기구</a></li>
+                        <li><a href="#">파일/바인더</a></li>
+                        <li><a href="#">노트/수첩</a></li>
+                        <li><a href="#">기타</a></li>
+                    </ul>
+                </li>
+
+                <li>자동차
+                    <ul>
+                        <li><a href="#">핸들커버</a></li>
+                        <li><a href="#">인테리어</a></li>
+                        <li><a href="#">익스테리어</a></li>
+                        <li><a href="#">스노우체인</a></li>
+                        <li><a href="#">시트커버</a></li>
+                    </ul>
+                </li>
+
+                <li>캠핑
+                    <ul>
+                        <li><a href="#">테이블</a></li>
+                        <li><a href="#">선반</a></li>
+                        <li><a href="#">화로</a></li>
+                        <li><a href="#">그릴</a></li>
+                        <li><a href="#">기타</a></li>
+                    </ul>
+                </li>
+
+                <li>낚시
+                    <ul>
+                        <li><a href="#">바다낚시</a></li>
+                        <li><a href="#">민물낚시</a></li>
+                        <li><a href="#">루어낚시</a></li>
+                        <li><a href="#">낚싯대</a></li>
+                        <li><a href="#">릴</a></li>
+                    </ul>
+                </li>
+
+                <li>등산
+                    <ul>
+                        <li><a href="#">등산화</a></li>
+                        <li><a href="#">배낭</a></li>
+                        <li><a href="#">텐트</a></li>
+                        <li><a href="#">침낭</a></li>
+                        <li><a href="#">등산의류</a></li>
+                    </ul>
+                </li>
+                
+                <li>향수/디퓨저
+                    <ul>
+                        <li><a href="#">여성향수</a></li>
+                        <li><a href="#">남성향수</a></li>
+                        <li><a href="#">폼프레그런스</a></li>
+                    </ul>
+                </li>
+                
+                <li>골프
+                    <ul>
+                        <li><a href="#">헤드커버</a></li>
+                        <li><a href="#">볼</a></li>
+                        <li><a href="#">글러브</a></li>
+                        <li><a href="#">마스크</a></li>
+                    </ul>
+                </li>
+                
+                <li>엔터
+                    <ul>
+                        <li><a href="#">공연티켓</a></li>
+                        <li><a href="#">기타</a></li>
+                    </ul>
+                </li>
+                
+                <li>반려
+                    <ul>
+                        <li><a href="#">강아지식품</a></li>
+                        <li><a href="#">고양이식품</a></li>
+                        <li><a href="#">기타</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 메뉴 카테고리 -->
+
+            <div class="mypage">
+                <a href="#"><i class="search_btn xi-search"></i></a>
+                <a href="https://www.xexymix.com/shop/basket.html"><i class="xi-cart-o"></i></a>
+                <div class="btn_mypage">
+                <a href="https://www.xexymix.com/shop/mypage.html">
+                    <i class="xi-user-o"></i>
+                    <ul class="mypage_menu">
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">주문조회</a></li>
+                        <li><a href="#">배송조회</a></li>
+                        <li><a href="#">쿠폰조회</a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">로그인</a></li>
+                    </ul>
+                </a></div>
+
+            </div>
+            
+        
+            <!-- 마이페이지 버튼구역 -->
+            
+        </div>
+        <!-- 상단 네비바 끝 -->
+    </header>
+<!-- ================================================================================== 헤더 끝 ================================================================================== -->
+
+
+        <section class="slide_section">
+
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="imgs/slide_1.jpg" style="width: 2040px;">
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex">
+                            <img src="imgs/slide_2-1.jpg">
+                            <img src="imgs/slide_2-2.jpg">
+                            <img src="imgs/slide_2-3.jpg">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        <!-- 슬라이드 영역 -->
+
+        <div class="collection_wrap">
+            <section class="collection">
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_image3&page=1&type=v&board_cate=&num1=999796&num2=00000&lock=N"><img src="imgs/collection_1.png"></a></div>
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_image3&page=1&type=v&board_cate=&num1=999797&num2=00000&number=120&lock=N"><img src="imgs/collection_2.png"></a></div>
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999745&num2=00000&lock=N"><img src="imgs/collection_3.png"></a></div>
+                <div><a href="https://xexymix.com/shop/shopbrand.html?xcode=022&mcode=014&type=Y"><img src="imgs/collection_4.png"></a></div>
+                <div><a href="https://xexymix.com/shop/shopbrand.html?xcode=022&mcode=009&type=Y"><img src="imgs/collection_5.png"></a></div>
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999758&num2=00000&number=16&lock=N"><img src="imgs/collection_6.png"></a></div>
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999752&num2=00000&number=5&lock=N&flag=notice"><img src="imgs/collection_7.png"></a></div>
+                <div><a href="https://xexymix.com/board/board.html?code=xexymix_board3&page=1&type=v&board_cate=&num1=999785&num2=00000&number=9&lock=N"><img src="imgs/collection_8.png"></a></div>
+            </section>
+        </div>
+            <!-- 컬렉션 아이콘 영역 -->
+            <section class="main_item_zone">
+                <section class="main_left">
+                    <div>
+                        <h2 class="reason">이유있는<br>베스트 아이템</h2>
+                    </div>
+                </section>
+                <section class="main_items">
+                    <div>
+                        <img src="imgs/item_1.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)"><br>
+                        <div class="main_item_imgbox"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D">블랙라벨 시그니처 380N 레깅스 1+1</a></div>
+                        <p class="price">59,800원<del class="cost_price">118,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="imgs/item_2.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div class="main_item_imgbox"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D">블랙라벨 시그니처 360N 레깅스 1+1</a></div>
+                        <p class="price">54,800원<del class="cost_price">98,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="imgs/item_3.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div class="main_item_imgbox"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D">V업 3D 플러스 레깅스 1+1</a></div>
+                        <p class="price">32,800원<del class="cost_price">78,000</del></p>
+                        <img src="imgs/item_status_size_3xl.gif" class="status_size"><img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="imgs/item_4.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div class="main_item_imgbox"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D">스트레치 밴딩 9부 슬랙스 1+1</a></div>
+                        <p class="price">69,800원<del class="cost_price">98,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="imgs/item_5.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                        <div class="main_item_imgbox"><a href="https://www.xexymix.com/shop/shopdetail.html?branduid=2060991&xcode=033&mcode=004&scode=001&special=7&GfDT=bGh3UQ%3D%3D">퍼포먼스 조거팬츠 1+1</a></div>
+                        <p class="price">74,800원<del class="cost_price">104,000</del></p>
+                        <img src="imgs/item_status_3.gif" class="status">
+                        <hr>
+                    </div>
+                    <div>
+                        <img src="imgs/item_6.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_7.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                </section>
+            </section>
+            <section class="main_item_zone2">
+                <section  class="main_left">
+
+                </section>
+                <!-- 왼쪽 여백 -->
+                <section class="main_items2">
+                    <div>
+                        <img src="imgs/item_1.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_2.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_3.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_4.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_5.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_6.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                    <div>
+                        <img src="imgs/item_7.jpg" onmouseover="onMouseOverImage(this)" onmouseout="onMouseOutImage(this)">
+                    </div>
+                </section>
+            </section>
+            <!-- 메인이미지 -->
+            
+            <footer>
+                
+            </footer>
+    
+                <script>
+                    const up = document.getElementById("go_top");
+                    
+            
+                    up.addEventListener("click", function () {
+                        // 페이지 상단으로 스크롤 이동
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth" // 부드러운 스크롤
+                        });
+                    });
+                    const down = document.getElementById("go_bottom");
+                    down.addEventListener("click", function () {
+                        // 페이지 상단으로 스크롤 이동
+                        window.scrollTo({
+                            top: document.body.scrollHeight,
+                            behavior: "smooth" // 부드러운 스크롤
+                        });
+                    });
+                </script>
+
+    
+</body>
+</html>
